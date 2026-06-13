@@ -275,7 +275,6 @@ def predict_disease(image: Image.Image) -> tuple:
         ) + advice
 
     # Severity gauge
-    severity_colors = {"low": "green", "moderate": "orange", "high": "red"}
     severity = info.get("severity", "low")
     severity_gauge = (
         f"### Severity: {severity.upper()}\n\n"
