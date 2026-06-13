@@ -4,7 +4,8 @@ emoji: 🌻
 colorFrom: green
 colorTo: orange
 sdk: gradio
-sdk_version: 4.29.0
+sdk_version: 6.18.0
+python_version: '3.13'
 app_file: app/app.py
 pinned: false
 ---
