@@ -396,7 +396,7 @@ def build_app() -> gr.Blocks:
                             type="pil",
                             label="Upload Flower Photo (or use camera)",
                             height=400,
-                            sources=["upload", "camera"],
+                            sources=["upload", "webcam"],
                         )
                         predict_btn = gr.Button(
                             "Analyze Disease",
