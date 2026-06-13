@@ -534,7 +534,7 @@ def plot_confusion_matrix(cm, class_names, save_dir="results"):
         plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
 
         # Add text annotations
-        thresh = max(cm) / 2.0
+        thresh = cm.max() / 2.0
         for i in range(len(class_names)):
             for j in range(len(class_names)):
                 ax.text(
