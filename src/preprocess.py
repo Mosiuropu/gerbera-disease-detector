@@ -24,7 +24,7 @@ import numpy as np
 def get_train_transforms(img_size: int = 224) -> A.Compose:
     """Training augmentations - aggressive to expand small datasets."""
     return A.Compose([
-        A.RandomResizedCrop(img_size, img_size, scale=(0.7, 1.0), ratio=(0.75, 1.33)),
+        A.RandomResizedCrop(size=(img_size, img_size), scale=(0.7, 1.0), ratio=(0.75, 1.33)),
         A.HorizontalFlip(p=0.5),
         A.VerticalFlip(p=0.3),
         A.RandomBrightnessContrast(
@@ -38,14 +38,14 @@ def get_train_transforms(img_size: int = 224) -> A.Compose:
             val_shift_limit=20,
             p=0.4,
         ),
-        A.ShiftScaleRotate(
+        A.Affine(
             shift_limit=0.1,
             scale_limit=0.2,
             rotate_limit=30,
             p=0.5,
         ),
         A.OneOf([
-            A.GaussNoise(var_limit=(10.0, 50.0)),
+            A.GaussNoise(),
             A.GaussianBlur(blur_limit=(3, 5)),
             A.MotionBlur(blur_limit=5),
         ], p=0.3),
@@ -53,13 +53,7 @@ def get_train_transforms(img_size: int = 224) -> A.Compose:
             A.OpticalDistortion(distort_limit=0.1),
             A.GridDistortion(num_steps=5, distort_limit=0.1),
         ], p=0.2),
-        A.CoarseDropout(
-            max_holes=8,
-            max_height=img_size // 8,
-            max_width=img_size // 8,
-            fill_value=0,
-            p=0.3,
-        ),
+        A.CoarseDropout(p=0.3),
         A.Normalize(
             mean=[0.485, 0.456, 0.406],
             std=[0.229, 0.224, 0.225],
@@ -208,13 +202,13 @@ def augment_dataset(
     print(f"   Target: {target_per_class} images per class")
 
     aug = A.Compose([
-        A.RandomResizedCrop(img_size, img_size, scale=(0.7, 1.0)),
+        A.RandomResizedCrop(size=(img_size, img_size), scale=(0.7, 1.0)),
         A.HorizontalFlip(p=0.5),
         A.VerticalFlip(p=0.3),
         A.RandomBrightnessContrast(brightness_limit=0.3, contrast_limit=0.3, p=0.5),
         A.HueSaturationValue(hue_shift_limit=20, sat_shift_limit=30, val_shift_limit=20, p=0.4),
-        A.ShiftScaleRotate(shift_limit=0.1, scale_limit=0.2, rotate_limit=30, p=0.5),
-        A.GaussNoise(var_limit=(10.0, 50.0), p=0.3),
+        A.Affine(shift_limit=0.1, scale_limit=0.2, rotate_limit=30, p=0.5),
+        A.GaussNoise(p=0.3),
     ])
 
     for cls_dir in sorted(data_dir.iterdir()):
