@@ -1,7 +1,5 @@
-# Data - only ignore split/augmented data, track raw collected images
-data/split/
-data/augmented/
-data/examples/
+# Data - ignore all dataset directories
+data/
 
 # Model weights (too large for git)
 models/*.pth
