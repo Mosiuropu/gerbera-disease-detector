@@ -1,0 +1,50 @@
+# Data
+data/
+*.jpg
+*.jpeg
+*.png
+*.webp
+
+# Model weights (too large for git)
+models/*.pth
+models/*.pt
+models/*.onnx
+models/*.bin
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Output artifacts (regenerable)
+results/training_curves.png
+results/confusion_matrix.png
+outputs/
+
+# Kaggle
+*.csv
