@@ -96,6 +96,9 @@ class GerberaPredictor:
         Returns:
             List of dicts: [{"class": ..., "confidence": ..., "disease_info": ...}, ...]
         """
+        # Ensure top_k does not exceed number of classes
+        top_k = min(top_k, self.num_classes)
+
         # Preprocess
         img_np = np.array(image)
         if img_np.ndim == 2:
