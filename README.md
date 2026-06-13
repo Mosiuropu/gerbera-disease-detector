@@ -2,7 +2,7 @@
 title: Gerbera Disease Detector
 emoji: 🌻
 colorFrom: green
-colorTo: orange
+colorTo: yellow
 sdk: gradio
 sdk_version: 6.18.0
 python_version: '3.13'
