@@ -24,8 +24,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 import datetime
-
-import numpy as np
 from PIL import Image
 
 import gradio as gr
