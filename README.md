@@ -1,3 +1,14 @@
+---
+title: Gerbera Disease Detector
+emoji: 🌻
+colorFrom: green
+colorTo: orange
+sdk: gradio
+sdk_version: 4.29.0
+app_file: app/app.py
+pinned: false
+---
+
 # 🌻 Gerbera Disease Detector
 
 **AI-powered disease identification for gerbera flower crops** — Train a deep learning model to identify diseases and pests in gerbera plants from photos. Farmers upload a picture and get instant diagnosis with treatment recommendations.
